@@ -1,13 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
 import Logo from "~/components/Logo.astro";
-import ToggleTheme from "~/components/common/ToggleTheme.astro";
 import ToggleMenu from "~/components/common/ToggleMenu.astro";
-import Button from "~/components/ui/Button.astro"
+import ToggleTheme from "~/components/common/ToggleTheme.astro";
+import Button from "~/components/ui/Button.astro";
 
-import { getHomePermalink } from "~/utils/permalinks";
-import { trimSlash, getAsset } from "~/utils/permalinks";
 import type { CallToAction } from "~/types";
+import { getAsset, getHomePermalink, trimSlash } from "~/utils/permalinks";
 
 interface Link {
   text?: string;
@@ -74,7 +73,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
         <ToggleMenu />
       </div>
     </div>
-    <nav
+    <!-- <nav
       class="items-center w-full md:w-auto hidden md:flex text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:mx-5"
       aria-label="Main navigation"
     >
@@ -120,7 +119,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
           ))
         }
       </ul>
-    </nav>
+    </nav> -->
     <div
       class:list={[
         { "ml-auto rtl:ml-0 rtl:mr-auto": position === "left" },
@@ -146,6 +145,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
+                <h1></h1>
                 <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto"/>
               ))}
             </span>
