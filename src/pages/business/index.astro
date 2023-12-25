@@ -1,0 +1,262 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Content from '~/components/widgets/Content.astro';
+import Features from '~/components/widgets/Features.astro';
+import Header from '~/components/widgets/Header.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'SaaS Landing Page',
+};
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="announcement"></Fragment>
+  <Fragment slot="header">
+    <Header
+      isBusiness
+      position="left"
+      links={[
+        { text: 'Contact', href: '/business/contact' },
+        { text: 'Pricing', href: '/business/pricing' },
+      ]}
+      actions={[
+        {
+          text: "I'm a user",
+          href: '/',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    tagline="SaaS Web Demo"
+    actions={[
+      { variant: 'primary', target: '_blank', text: 'Book a Demo', href: '/contact' },
+      { text: 'Request a Free Trial', href: '/contact' },
+    ]}
+    image={{
+      src: 'https://assets-global.website-files.com/63f9282193c6e4356f476145/6440402ffe01003c2d44b11c_multi-device.png',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">Manage queues and streamline operations</Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Optimize Wait Times, Harness Analytics, and Empower Data-Driven Strategies with
+        <span class="font-semibold">SwiftQu</span></span
+      >
+    </Fragment>
+  </Hero2>
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="features"
+    title="Why choose SwiftQu?"
+    subtitle="SwiftQu's system is designed for both small businesses and enterprise level clients to help attract, seat and manage queuers efficiently"
+    columns={2}
+    items={[
+      {
+        title: 'Improve customer experience',
+        description:
+          'Reduce walkaways and have happier customers by transforming the queuing experience to a more superior service encounter',
+        icon: 'tabler:layers-union',
+      },
+      {
+        title: 'Reduce operational costs',
+        description: `Cut down on staff workload and wasted manpower without compromising service quality through our automated system that manages customer flow more effectively`,
+        icon: 'tabler:artboard',
+      },
+      {
+        title: 'Seamless integration',
+        description:
+          'Effortlessly blend our system into your existing setup in less than 24 hours, ensuring a smooth operational flow tailored to your business needs.',
+        icon: 'tabler:writing',
+      },
+      {
+        title: 'Data collection and analysis',
+        description: `Leverage in-depth analysis of queuing data to refine wait times, manage customer flow, and optimize your overall queue management strategy.`,
+        icon: 'tabler:podium',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Enable self-check-in for waiting lines via iPad or QRCode',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Capture customer information and data',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Minimize frustration and human error',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Offer a multilingual interface',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Check-in kiosk</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    items={[
+      {
+        title: 'Seamlessly organize the waitlist',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Move, forward and reassign customers',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Categorize customers and service lines',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Chat with customers in the dashboard',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Service Dashboard</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    items={[
+      {
+        title: 'Measure and monitor KPIs',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Understand customers’ reason of visit',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Monitor team performance',
+        icon: 'tabler:template',
+      },
+      {
+        title: 'Reduce operational costss',
+        icon: 'tabler:carousel-horizontal',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1576153192621-7a3be10b356e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1674&q=80',
+      alt: 'Colorful Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Dashboard Analytics</h3>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <!-- Stats Widget -->
+
+  <Stats
+    title="SwiftQu is trusted by 17 businesses around Australia"
+    subtitle="Customer service is the cornerstone of SwiftQu's creation. That's why we built SwiftQu. Your needs are our priority"
+    stats={[
+      { title: 'Queuers Served', amount: '5,000+' },
+      { title: 'Hours Saved', amount: '75,000+' },
+      { title: 'Satisfied Partners', amount: '15+' },
+      { title: 'G2 Reviews', amount: '4.8' },
+    ]}
+  />
+
+  <!-- Stats Widget -->
+
+  <!-- FAQs Widget ******************* -->
+
+  <!-- <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'Is AstroWind compatible with the latest versions of Astro and Tailwind CSS?',
+        description:
+          'Yes, AstroWind is designed to be compatible with the latest versions of both Astro and Tailwind CSS. This ensures that you can harness the full capabilities of these technologies while benefiting from the features offered by AstroWind.',
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Can I use AstroWind for both personal and commercial projects?',
+        description: `Certainly! AstroWind is versatile and can be used for a wide range of projects, including both personal and commercial endeavors. Whether you're building a professional portfolio, launching a startup, or creating a marketing website, AstroWind has you covered.`,
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'What level of coding knowledge is required to use AstroWind?',
+        description:
+          'While some familiarity with HTML, CSS, and web development concepts is helpful, the user-friendly interface and customization options allow those with limited coding experience to create impressive websites. For more advanced users, AstroWind offers extensive customization capabilities.',
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Is customer support available for AstroWind users seeking guidance?',
+        description: `Absolutely, our dedicated customer support team is here to assist you with any questions or challenges you may encounter. Feel free to reach out to us through our support channels, and we'll be happy to provide the help you need.`,
+        icon: 'tabler:chevrons-right',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs> -->
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Ready to supercharge your queues?"
+    subtitle="Book a 45-minute video call with our team to discuss the best waitlist management options for your organisation."
+    callToAction={{
+      text: 'Contact us',
+      href: '/',
+    }}
+    items={[
+      {
+        title: 'Email us',
+        description: 'admin@swiftqu.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Call us',
+        description: '+61 403 057 369',
+        icon: 'tabler:headset',
+      },
+    ]}
+  />
+</Layout>
