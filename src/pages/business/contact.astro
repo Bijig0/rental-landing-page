@@ -1,8 +1,10 @@
 ---
 import ContactUs from '~/components/widgets/Contact.astro';
+import Footer from '~/components/widgets/Footer.astro';
 import Header from '~/components/widgets/Header.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import businessFooterData from './businessFooterData';
 
 const metadata = {
   title: 'Contact',
@@ -58,4 +60,7 @@ const metadata = {
     }}
     description="Our support team typically responds within 24 business hours."
   />
+  <Fragment slot="footer">
+    <Footer {...businessFooterData} />
+  </Fragment>
 </Layout>

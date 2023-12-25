@@ -7,7 +7,9 @@ import Header from '~/components/widgets/Header.astro';
 import Hero2 from '~/components/widgets/Hero2.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 
+import Footer from '~/components/widgets/Footer.astro';
 import Stats from '~/components/widgets/Stats.astro';
+import businessFooterData from './businessFooterData';
 
 const metadata = {
   title: 'SaaS Landing Page',
@@ -259,4 +261,7 @@ const metadata = {
       },
     ]}
   />
+  <Fragment slot="footer">
+    <Footer {...businessFooterData} />
+  </Fragment>
 </Layout>

@@ -1,9 +1,11 @@
 ---
 import FAQs from '~/components/widgets/FAQs.astro';
+import Footer from '~/components/widgets/Footer.astro';
 import Header from '~/components/widgets/Header.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import Prices from '~/components/widgets/Pricing.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import businessFooterData from './businessFooterData';
 
 const metadata = {
   title: 'Pricing',
@@ -162,4 +164,7 @@ const metadata = {
       },
     ]}
   />
+  <Fragment slot="footer">
+    <Footer {...businessFooterData} />
+  </Fragment>
 </Layout>
