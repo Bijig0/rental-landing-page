@@ -158,7 +158,7 @@ const EmailForm = (props: Props) => {
       {children && <div className="mt-10 grid">{children}</div>}
 
       {validationFailed === true ? (
-        <p className="mt-4 text-red-700 after:content-['*'] after:ml-0.5">Missing required Fields</p>
+        <p className="mt-4 text-red-700 after:content-['*'] after:ml-0.5">Missing required fields</p>
       ) : null}
 
       {description && (
