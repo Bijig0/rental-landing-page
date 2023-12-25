@@ -11,11 +11,20 @@ const EmailForm = (props: Props) => {
   const isEmailSent = emailJSResponse.status !== -1;
   const isEmailSendSuccess = emailJSResponse.status === 200;
   const isEmailSendFailed = emailJSResponse.status !== 200 && emailJSResponse.status !== -1;
+  console.log({ isEmailSent, isEmailSendSuccess, isEmailSendFailed });
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    console.log(e);
     console.log('run');
     e.preventDefault();
-    const response = await emailjs.sendForm('service_svuswb5', 'template_yknvvm8', '#email-form', '1QhUBMpFGH856b2Qr');
-    setEmailJSResponse(response);
+    const form = e.target as HTMLFormElement;
+    try {
+      const response = await emailjs.sendForm('service_svuswb5', 'template_yknvvm8', form, '1QhUBMpFGH856b2Qr');
+      console.log({ response });
+      setEmailJSResponse(response);
+    } catch (error) {
+      const emailJSError = error as EmailJSResponseStatus;
+      setEmailJSResponse(emailJSError);
+    }
   };
 
   const renderAlert = () => {
@@ -27,7 +36,7 @@ const EmailForm = (props: Props) => {
         <>
           <div className="mt-4"></div>
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong className="font-bold">Email sent successfully!</strong>
+            <strong className="font-bold">Email sent successfully! </strong>
             <span className="block sm:inline">A representative will be in touch soon</span>
           </div>
         </>
@@ -37,8 +46,12 @@ const EmailForm = (props: Props) => {
         <>
           <div className="mt-4"></div>
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-            <strong className="font-bold">An error occurred</strong>
-            <span className="block sm:inline">Status Code: </span>
+            <strong className="font-bold">An error occurred </strong>
+            <span className="block sm:inline">
+              Error: {emailJSResponse.text} Status Code: {emailJSResponse.status}
+            </span>
+            <br />
+            <span className="block sm:inline">Please report this to the admin admin@swiftqu.com</span>
           </div>
         </>
       );
