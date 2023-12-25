@@ -86,7 +86,6 @@ const getSite = () => {
     site: undefined,
     base: '/',
     trailingSlash: false,
-
     googleSiteVerificationId: '',
   };
 

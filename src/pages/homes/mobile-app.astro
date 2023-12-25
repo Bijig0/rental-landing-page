@@ -14,12 +14,40 @@ import Button from '~/components/ui/Button.astro';
 
 import appStoreImg from '~/assets/images/app-store.png';
 import googlePlayImg from '~/assets/images/google-play.png';
+import Footer from '~/components/widgets/Footer.astro';
+import { getAsset, getPermalink } from '~/utils/permalinks';
 
 const appStoreDownloadLink = 'https://github.com/onwidget/astrowind';
 const googlePlayDownloadLink = 'https://github.com/onwidget/astrowind';
 
 const metadata = {
   title: 'Mobile App Homepage',
+};
+const myFooterData = {
+  links: [
+    {
+      title: 'Company',
+      links: [
+        { text: 'For businesses', href: '#' },
+        { text: 'Legal', href: '#' },
+      ],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Terms', href: getPermalink('/terms') },
+    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  ],
+  socialLinks: [
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+  ],
+  footNote: `
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> SwiftQu</a> · All rights reserved.
+  `,
 };
 ---
 
@@ -244,4 +272,7 @@ const metadata = {
       </Button>
     </div>
   </CallToAction>
+  <Fragment slot="footer">
+    <Footer {...myFooterData} />
+  </Fragment>
 </Layout>
