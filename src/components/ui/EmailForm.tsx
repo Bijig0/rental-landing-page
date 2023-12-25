@@ -1,13 +1,22 @@
 // @ts-ignore
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
 import React, { useState } from 'react';
+import { z } from 'zod';
 import type { Form } from '~/types';
 
 type Props = Omit<Form, 'button'> & { children: any };
 
+const emailFormSchema = z.object({
+  email: z.string().email(),
+  name: z.string(),
+  additionalDetails: z.string().optional(),
+  disclaimer: z.boolean(),
+});
+
 const EmailForm = (props: Props) => {
   const { inputs, textarea, disclaimer, children, description } = props;
   const [emailJSResponse, setEmailJSResponse] = useState<EmailJSResponseStatus>({ text: '', status: -1 });
+  const [validationFailed, setValidationFailed] = useState<boolean | null>(null);
   const isEmailSent = emailJSResponse.status !== -1;
   const isEmailSendSuccess = emailJSResponse.status === 200;
   const isEmailSendFailed = emailJSResponse.status !== 200 && emailJSResponse.status !== -1;
@@ -16,7 +25,32 @@ const EmailForm = (props: Props) => {
     console.log(e);
     console.log('run');
     e.preventDefault();
+
     const form = e.target as HTMLFormElement;
+
+    const unsafeFormInfo = {
+      // @ts-ignore
+      disclaimer: e.target.elements.disclaimer.checked,
+      // @ts-ignore
+
+      additionalDetails: e.target.elements.textarea.value,
+      // @ts-ignore
+
+      email: e.target.elements.email.value,
+      // @ts-ignore
+
+      name: e.target.elements.name.value,
+    };
+
+    const parsedFormInfo = emailFormSchema.safeParse(unsafeFormInfo);
+
+    if (!parsedFormInfo.success) {
+      setValidationFailed(true);
+      return;
+    } else if (parsedFormInfo.success) {
+      setValidationFailed(false);
+    }
+
     try {
       const response = await emailjs.sendForm('service_svuswb5', 'template_yknvvm8', form, '1QhUBMpFGH856b2Qr');
       console.log({ response });
@@ -66,7 +100,10 @@ const EmailForm = (props: Props) => {
             name && (
               <div className="mb-6">
                 {label && (
-                  <label htmlFor={name} className="block text-sm font-medium">
+                  <label
+                    htmlFor={name}
+                    className="block text-sm font-medium after:content-['*'] after:ml-0.5 after:text-red-500"
+                  >
                     {label}
                   </label>
                 )}
@@ -108,7 +145,10 @@ const EmailForm = (props: Props) => {
             />
           </div>
           <div className="ml-3">
-            <label htmlFor="disclaimer" className="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
+            <label
+              htmlFor="disclaimer"
+              className="cursor-pointer after:content-['*'] after:ml-0.5 after:text-red-500 select-none text-sm text-gray-600 dark:text-gray-400"
+            >
               {disclaimer.label}
             </label>
           </div>
@@ -116,6 +156,10 @@ const EmailForm = (props: Props) => {
       )}
 
       {children && <div className="mt-10 grid">{children}</div>}
+
+      {validationFailed === true ? (
+        <p className="mt-4 text-red-700 after:content-['*'] after:ml-0.5">Missing required Fields</p>
+      ) : null}
 
       {description && (
         <div className="mt-3 text-center">
