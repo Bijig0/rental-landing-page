@@ -1,12 +1,15 @@
 ---
+import Footer from '~/components/widgets/Footer.astro';
+import Header from '~/components/widgets/Header.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 import type { MetaData } from '~/types';
+import { getAsset, getPermalink } from '~/utils/permalinks';
 
 export interface Props {
   frontmatter: {
-    title?: string
-  }
+    title?: string;
+  };
 }
 
 const { frontmatter } = Astro.props;
@@ -14,9 +17,61 @@ const { frontmatter } = Astro.props;
 const metadata: MetaData = {
   title: frontmatter?.title,
 };
+const myFooterData = {
+  links: [
+    {
+      title: 'Company',
+      links: [
+        { text: 'For businesses', href: '#' },
+        { text: 'Legal', href: '#' },
+      ],
+    },
+  ],
+  secondaryLinks: [
+    { text: 'Terms', href: getPermalink('/terms') },
+    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  ],
+  socialLinks: [
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+  ],
+  footNote: `
+    <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
+    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> SwiftQu</a> · All rights reserved.
+  `,
+};
 ---
 
 <Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      position="left"
+      links={[
+        { text: 'Home', href: '#' },
+        { text: 'Features', href: '/homes/mobile-app#:~:text=Join%20the%20line%20online' },
+        {
+          text: 'Testimonials',
+          href: '/homes/mobile-app#:~:text=%22%20SwiftQu%20made%20my,and%20user%2Dfriendly.%20%22',
+        },
+        { text: 'Download', href: '/homes/mobile-app#:~:text=Download%20the%20SwiftQU%20app%20now!' },
+      ]}
+      actions={[
+        {
+          text: "I'm a business",
+          href: '#download',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+  <Fragment slot="footer">
+    <Footer {...myFooterData} />
+  </Fragment>
+
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-4xl">
     <h1 class="font-bold font-heading text-4xl md:text-5xl leading-tighter tracking-tighter">{frontmatter.title}</h1>
     <div
