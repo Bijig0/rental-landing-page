@@ -11,7 +11,7 @@ metadata:
   title:
     default: SwiftQu
     template: '%s — SwiftQu'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "From small businesses to enterprises, we're here to supercharge your queues!"
   robots:
     index: true
     follow: true
