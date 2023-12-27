@@ -13,10 +13,9 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 
 // Uncomment line below to activate View Transitions
-// import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from 'astro:transitions';
 
 import type { MetaData as MetaDataType } from '~/types';
-import ViewTransitions from 'astro/components/ViewTransitions.astro.jsx';
 
 export interface Props {
   metadata?: MetaDataType;
