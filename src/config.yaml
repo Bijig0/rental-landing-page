@@ -1,6 +1,6 @@
 site:
-  name: SwiftQu
-  site: 'https://swiftqu.com'
+  name: Gifleet
+  site: 'https://Gifleet.com'
   base: '/'
   trailingSlash: false
 
@@ -9,14 +9,14 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: SwiftQu
-    template: '%s — SwiftQu'
-  description: "From small businesses to enterprises, we're here to supercharge your queues!"
+    default: Gifleet
+    template: '%s — Gifleet'
+  description: "Australia's #1 Peer To Peer Car Rental Agency"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: SwiftQu
+    site_name: Gifleet
     images:
       - url: '~/assets/images/default.png'
         width: 1200
